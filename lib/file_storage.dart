@@ -32,4 +32,20 @@ class FileStorage {
     final file = await _localFile;
     return file.writeAsString(data);
   }
+
+  //read data from the file as lines
+  //this will return a list of string per line
+  Future<List<String>?> readFile() async {
+    try {
+      final file = await _localFile;
+
+      // Read the file
+      final contents = await file.readAsLines();
+
+      return contents;
+    } catch (e) {
+      // If encountering an error, return 0
+      return null;
+    }
+  }
 }
